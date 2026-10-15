@@ -37,15 +37,15 @@ Then open **http://localhost:3030**. Stop with `bash start-labspace.sh down`.
 
 ---
 
-## For 40 people (local / BYO delivery)
+## Requirements
 
-- Each attendee runs this Labspace on **their own laptop** — `sbx` microVMs run
-  per-host, so there is **no central capacity limit** and no per-seat cloud cost.
-- Scaling to 40 (or 400) is trivial; the only requirement is that each laptop is
-  **Apple Silicon or Windows 11 x86_64** with virtualization available (Intel
-  Macs can't participate).
-- Pre-stage the **mock binary** so nobody is blocked waiting on the real Box
-  private-preview client.
+- Each machine runs this Labspace locally; `sbx` microVMs run on the host, so no
+  central infrastructure is needed.
+- Each machine must be **Apple Silicon or Windows 11 x86_64** with
+  virtualization available — `sbx` does not emulate, so Intel Macs are not
+  supported.
+- No real `box-mount` binary? Pre-stage the **mock binary** so the build,
+  validate, and compose steps all work without it.
 
 ---
 

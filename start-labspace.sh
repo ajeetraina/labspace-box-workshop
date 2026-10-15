@@ -23,7 +23,7 @@ error() { echo -e "${RED}ERROR:${NC} $*"; exit 1; }
 
 # ── down ───────────────────────────────────────────────────────
 if [[ "${1:-up}" == "down" ]]; then
-  info "Stopping labspace…"
+  info "Stopping labspace..."
   docker compose -p box-labspace -f "$COMPOSE_FILE" down 2>/dev/null || true
   lsof -ti tcp:$TTYD_PORT | xargs kill -9 2>/dev/null || true
   exit 0
@@ -49,19 +49,19 @@ if command -v sbx >/dev/null 2>&1; then
 fi
 
 # ── host terminal (ttyd) ───────────────────────────────────────
-info "Clearing port $TTYD_PORT…"
+info "Clearing port $TTYD_PORT..."
 lsof -ti tcp:$TTYD_PORT | xargs kill -9 2>/dev/null || true
 sleep 1
 
 SHELL_BIN="$(command -v zsh || command -v bash)"
-info "Starting host terminal (ttyd) on :$TTYD_PORT using $SHELL_BIN…"
+info "Starting host terminal (ttyd) on :$TTYD_PORT using $SHELL_BIN..."
 ttyd -p "$TTYD_PORT" --writable --max-clients 4 "$SHELL_BIN" &
 TTYD_PID=$!
 sleep 1
 lsof -ti tcp:$TTYD_PORT >/dev/null 2>&1 || error "ttyd failed to start on :$TTYD_PORT"
 
 # ── labspace ───────────────────────────────────────────────────
-info "Starting Labspace…"
+info "Starting Labspace..."
 docker compose -p box-labspace -f "$COMPOSE_FILE" up -d
 
 echo ""
@@ -75,7 +75,7 @@ echo ""
 echo "Press Ctrl+C to stop."
 
 cleanup() {
-  echo ""; info "Stopping…"
+  echo ""; info "Stopping..."
   kill "$TTYD_PID" 2>/dev/null || true
   docker compose -p box-labspace -f "$COMPOSE_FILE" down 2>/dev/null || true
 }
