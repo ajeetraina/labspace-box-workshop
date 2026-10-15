@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# MOCK box-mount (workshop placeholder - NOT the real Box client).
+case "${1:-}" in
+  --version|version) echo "box-mount 0.4.0 (MOCK - workshop placeholder)";;
+  mount)   echo "MOCK: would mount Box folder '${3:-?}' at '${2:-?}' (no real sync)";;
+  status)  echo "MOCK: no real mounts (this is the workshop placeholder binary)";;
+  unmount) echo "MOCK: would unmount '${2:-?}'";;
+  *)       echo "MOCK box-mount: unknown command '${*:-}'. Try --version." >&2; exit 2;;
+esac

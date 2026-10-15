@@ -13,6 +13,7 @@ not skip this section.
 | **Docker** with **`docker buildx`** | bundled with modern Docker Desktop / Rancher Desktop; the daemon must be running to build the kit |
 | The **`sbx` CLI** | installed below |
 | A **Box developer token** | free, ~60 min lifetime - we get one in Lab 2 |
+| *(Lab 7 only)* **`kit-tck`** + a **Go toolchain** | the conformance checker does **not** ship with `sbx`; `go install` it in Lab 7 (`brew install go` if you don't have Go) |
 | *(optional)* the real **`box-mount` binary** | a one-command mock lets you complete every build/validate/compose step without it |
 
 > Docker Desktop is **not** required to *run* `sbx` - but you **do** need a
