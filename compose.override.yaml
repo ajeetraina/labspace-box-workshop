@@ -1,0 +1,23 @@
+services:
+  # Clone the workshop repo into the attendee's project directory on startup.
+  configurator:
+    environment:
+      PROJECT_CLONE_URL: https://github.com/ajeetraina/sbx-kits-box-demo
+
+  # Dummy workspace — satisfies depends_on. The REAL terminal is ttyd running on
+  # the attendee's host (port 8085), owned by start-labspace.sh, so that `sbx`
+  # microVMs execute on the host with virtualization, not nested in a container.
+  workspace:
+    image: ajeetraina777/labspace-workspace-ttyd:latest
+    pull_policy: always
+    command: ttyd --writable bash
+    ports: !override []
+    environment:
+      PORT: "8086"
+
+  # sbx-aware interface: renders the guide and proxies the two host terminals.
+  interface:
+    image: ajeetraina777/labspace-interface-sbx:latest
+    pull_policy: always
+    environment:
+      WORKSPACE_TYPE: ttyd

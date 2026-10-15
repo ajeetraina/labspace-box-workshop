@@ -1,0 +1,60 @@
+metadata:
+  id: ajeetraina/labspace-box-workshop
+  sourceRepo: github.com/ajeetraina/labspace-box-workshop
+  contentVersion: v1.0.0
+
+title: "Build a Docker Sandboxes Kit: The Box Mount Kit"
+description: |
+  A 90-minute, hands-on workshop. Build, run, verify, and publish a Kit v3
+  mixin that brings Box's Box Mount client into a Docker Sandbox - mounting a
+  Box folder into an isolated microVM and keeping it in two-way sync, with the
+  Box token injected by the sandbox proxy so the real token never enters the
+  container. Runs locally: sbx executes on your own host (Apple Silicon or
+  Windows 11 x86_64); this Labspace serves the guide and the terminal.
+
+# Two HOST terminals (ttyd on :8085, owned by start-labspace.sh). sbx must run
+# on the host because it uses real microVMs and does NOT emulate.
+services:
+  - id: term1
+    title: Terminal 1
+    url: http://localhost:8085
+    icon: terminal
+  - id: term2
+    title: Terminal 2
+    url: http://localhost:8085
+    icon: terminal
+
+sections:
+  - title: Introduction
+    contentPath: 01-introduction.md
+  - title: "Pre-flight: install sbx & confirm the toolchain"
+    contentPath: 02-preflight.md
+  - title: "Lab 1 - Anatomy of a Kit v3"
+    contentPath: 03-anatomy.md
+    duration: 15
+  - title: "Lab 2 - Get a Box token & stage the client"
+    contentPath: 04-token-and-client.md
+    duration: 10
+  - title: "Lab 3 - Validate & build the kit"
+    contentPath: 05-validate-build.md
+    duration: 10
+  - title: "Lab 4 - Run it: compose the mixin onto a workload"
+    contentPath: 06-compose.md
+    duration: 10
+  - title: "Lab 5 - Use Box Mount: two-way sync"
+    contentPath: 07-two-way-sync.md
+    duration: 10
+  - title: "Lab 6 - Verify the security model 🔥"
+    contentPath: 08-security-model.md
+    duration: 8
+  - title: "Lab 7 - Conformance-check with kit-tck"
+    contentPath: 09-conformance.md
+    duration: 7
+  - title: "Lab 8 - Publish the kit"
+    contentPath: 10-publish.md
+    duration: 5
+  - title: "Lab 9 - Clean up kit images (the right way)"
+    contentPath: 11-cleanup.md
+    duration: 8
+  - title: Conclusion & Next Steps
+    contentPath: 12-conclusion.md

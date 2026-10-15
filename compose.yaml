@@ -1,0 +1,10 @@
+# Box Mount Kit Labspace — local/BYO delivery.
+#
+# The guide + browser terminal are served by the shared labspace content-dev
+# image; the terminal itself runs on the ATTENDEE'S HOST (ttyd on :8085), not in
+# a container. That is deliberate: `sbx` runs real microVMs and does NOT emulate,
+# so the sandbox commands in this workshop must execute on the host where KVM /
+# Apple-Silicon virtualization is available. See compose.override.yaml.
+include:
+  - oci://dockersamples/labspace-content-dev
+  - ./compose.override.yaml
