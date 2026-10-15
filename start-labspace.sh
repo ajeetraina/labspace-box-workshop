@@ -61,6 +61,11 @@ sleep 1
 lsof -ti tcp:$TTYD_PORT >/dev/null 2>&1 || error "ttyd failed to start on :$TTYD_PORT"
 
 # ── labspace ───────────────────────────────────────────────────
+# labspace-content-dev bind-mounts the local content via ${CONTENT_PATH}; if it
+# is unset, Compose sees ":/dev-content:ro" and fails with "empty section
+# between colons". Point it at the repo root (which holds labspace/).
+export CONTENT_PATH="${CONTENT_PATH:-$(pwd)}"
+info "CONTENT_PATH: $CONTENT_PATH"
 info "Starting Labspace..."
 docker compose -p box-labspace -f "$COMPOSE_FILE" up -d
 
