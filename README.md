@@ -54,14 +54,15 @@ Then open **http://localhost:3030**. Stop with `bash start-labspace.sh down`.
 | File | Role |
 |---|---|
 | `compose.yaml` | includes `oci://dockersamples/labspace-content-dev` + the override |
-| `compose.override.yaml` | clones [`sbx-kits-box-demo`](https://github.com/ajeetraina/sbx-kits-box-demo) into the attendee's project dir; points the interface at the **host** ttyd terminal |
-| `labspace/labspace.yaml` | title, metadata, two host terminals, and the 9-lab section list |
-| `labspace/*.md` | the step-by-step guide |
+| `compose.override.yaml` | points the interface at the **host** ttyd terminal; sets `PROJECT_CLONE_URL` for cloud/standard mode |
+| `labspace/labspace.yaml` | title, metadata, two host terminals, and the section list |
+| `labspace/*.md` | the step-by-step guide (synced to the interface at `/instructions`) |
+| `project/` | the hands-on kit (`box-mount/`, `scripts/`) — synced to the workspace at `/project` |
 | `start-labspace.sh` | checks prereqs, starts ttyd on the host (:8085), brings up the Labspace |
 
-The workshop **content/kit** lives in the companion repo
-[`ajeetraina/sbx-kits-box-demo`](https://github.com/ajeetraina/sbx-kits-box-demo)
-— this repo is the Labspace wrapper around it.
+This repo is **self-contained**: the guide (`labspace/`) and the kit it builds
+(`project/`) ship together, mirroring the layout of
+[`sbx-kits-box-demo`](https://github.com/ajeetraina/sbx-kits-box-demo).
 
 ---
 

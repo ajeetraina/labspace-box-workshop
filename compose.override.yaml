@@ -1,8 +1,10 @@
 services:
-  # Clone the workshop repo into the attendee's project directory on startup.
+  # Standard (cloud) mode clones THIS repo so the attendee gets its project/ and
+  # labspace/ layout. Local dev mode (start-labspace.sh) ignores this and syncs
+  # the project/ directory from the bind mount instead.
   configurator:
     environment:
-      PROJECT_CLONE_URL: https://github.com/ajeetraina/sbx-kits-box-demo
+      PROJECT_CLONE_URL: https://github.com/ajeetraina/labspace-box-workshop
 
   # Dummy workspace — satisfies depends_on. The REAL terminal is ttyd running on
   # the attendee's host (port 8085), owned by start-labspace.sh, so that `sbx`

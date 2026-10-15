@@ -21,17 +21,18 @@ not skip this section.
 
 ---
 
-## Step 1 - The repo is already here
+## Step 1 - The project is already here
 
-This Labspace cloned the workshop repo into your project directory on startup.
-Switch to it in the terminal:
+The kit lives in this Labspace's `project/` directory. In the terminal, switch
+to it:
 
 ```bash
-cd ~/sbx-kits-box-demo || cd "$(find ~ -maxdepth 3 -type d -name sbx-kits-box-demo 2>/dev/null | head -1)"
+cd project
 pwd
 ```
 
-From here on, **all commands assume you're in `sbx-kits-box-demo`**. Have a look around:
+From here on, **all commands assume you're in that `project` directory**. Have a
+look around:
 
 ```bash
 ls box-mount          # the Kit v3: descriptor, overlay recipe, agent context
